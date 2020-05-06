@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Dropdown from "react-dropdown";
 import parse from "html-react-parser";
 
@@ -15,7 +14,14 @@ export default function App() {
   const [selectedSeason, setSelectedSeason] = useState("");
   const episodes = seasons[selectedSeason] || [];
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchShow()
+      .then((res) => {
+        setShow(res.data);
+        setSeasons(formatSeasons(res.data._embedded.episodes));
+      })
+      .catch((err) => console.log("useEffect err in App.js", err));
+  }, []);
 
   const handleSelect = (e) => {
     setSelectedSeason(e.value);
