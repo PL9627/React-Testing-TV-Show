@@ -72,7 +72,7 @@ test("Episodes can render", () => {
   render(<Episodes episodes={[]} error="" />);
 });
 
-test("", () => {
+test("List of episodes render", () => {
     const {queryAllByTestId, rerender} = render(
         <Episodes error="" episodes={[]}/>
     );
