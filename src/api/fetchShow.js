@@ -9,5 +9,6 @@ export const fetchShow = () => {
       console.log(res);
 
       return res;
-    });
+    })
+    .catch(err => console.log("fetchShow axios err", err));
 };
