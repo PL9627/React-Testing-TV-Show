@@ -73,5 +73,15 @@ test("Episodes can render", () => {
 });
 
 test("", () => {
+    const {queryAllByTestId, rerender} = render(
+        <Episodes error="" episodes={[]}/>
+    );
 
+    expect(queryAllByTestId(/ep/i)).toHaveLength(0);
+
+    rerender(
+        <Episodes error="" episodes={epData} />
+    );
+
+    expect(queryAllByTestId(/ep/i)).toHaveLength(3);
 })
